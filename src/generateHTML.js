@@ -29,21 +29,25 @@ function generateHTML(array) {
 function generateCards(array) {
     let textColor;
     let roleSpecial;
+    let roleIcon;
     let cards = [];
     for (const employeeObj of array) {
         if (employeeObj.getRole() === 'Manager') {
             textColor = `danger`;
-            roleSpecial = `<li class="list-group-item">Office: ${employeeObj.officeNumber}</li>`
+            roleSpecial = `<li class="list-group-item">Office: ${employeeObj.officeNumber}</li>`;
+            roleIcon = `<i class="far fa-address-book"></i>`
         } else if (employeeObj.getRole() === 'Engineer') {
             textColor = `primary`;
-            roleSpecial = `<li class="list-group-item">GitHub: <a href="${employeeObj.github}" target="__blank">${employeeObj.github}</a></li>`
+            roleSpecial = `<li class="list-group-item">GitHub: <a href="https://github.com/${employeeObj.github}" target="__blank">${employeeObj.github}</a></li>`;
+            roleIcon = `<i class="fas fa-laptop-code"></i>`
         } else if (employeeObj.getRole() === 'Intern') {
             textColor = `success`;
-            roleSpecial = `<li class="list-group-item">School: ${employeeObj.school}</li>`
+            roleSpecial = `<li class="list-group-item">School: ${employeeObj.school}</li>`;
+            roleIcon = `<i class="fas fa-user-graduate"></i>`
         }
         cards.push(`
         <div class="card border-${textColor} text-${textColor} mb-3" style="max-width: 18rem;">
-            <div class="card-header"><i class="far fa-address-book"></i>${employeeObj.getRole()}</div>
+            <div class="card-header">${roleIcon} ${employeeObj.getRole()}</div>
                 <div class="card-body">
                 <h5 class="card-title">${employeeObj.name}</h5>
                 <ul class="list-group list-group-flush">
