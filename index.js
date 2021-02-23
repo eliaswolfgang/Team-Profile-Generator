@@ -57,10 +57,6 @@ const internCheck = [
       message: intChalk("What is this intern's school/university?"),
     }
 ];
-// Function to write HTML using fs module
-function writeHTML(data) {
-    fs.writeFile('./dist/index.html', data, (error) => error ? console.log(error) : console.log("Find your team profile in the dist folder!"))
-};
 // Function to begin Inquirer session
 function addEmployees() {
   inquirer.prompt(main)
@@ -109,13 +105,12 @@ function addEmployees() {
             addEmployees()
         } else {
         let profileHTML = generateHTML(team);
-        writeHTML(profileHTML);
-        console.log("Your team's profile is ready! Check the dist folder.");
-        process.exit(0);
+        fs.writeFile('./dist/index.html', profileHTML, (error) => error ? console.log(error) : console.log("Find your team profile in the dist folder!"));
         }
       });                    
     });
   }); 
+
 };
 
 addEmployees();

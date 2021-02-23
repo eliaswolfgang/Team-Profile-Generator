@@ -1,7 +1,6 @@
 // Function to help generate HTML
 function generateHTML(array) {
-    return `
-    <!DOCTYPE html>
+    return `<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="utf-8">
@@ -25,57 +24,37 @@ function generateHTML(array) {
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
       </body>
-    </html>
-    `
+    </html>`
 };
-function generateCards(arr) {
+function generateCards(array) {
+    let textColor;
+    let roleSpecial;
     let cards = [];
-    arr.forEach(employeeObj => {
+    for (const employeeObj of array) {
         if (employeeObj.getRole() === 'Manager') {
-            cards.push(`
-            <div class="card border-danger text-danger mb-3" style="max-width: 18rem;">
-                <div class="card-header"><i class="far fa-address-book"></i>${employeeObj.getRole()}</div>
-                <div class="card-body">
-                <h5 class="card-title">${employeeObj.name}</h5>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${employeeObj.id}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${employeeObj.email}">${employeeObj.email}</li>
-                    <li class="list-group-item">Office: ${employeeObj.officeNumber}</li>
-                </ul> 
-                </div>
-            </div>
-            `);
+            textColor = `danger`;
+            roleSpecial = `<li class="list-group-item">Office: ${employeeObj.officeNumber}</li>`
         } else if (employeeObj.getRole() === 'Engineer') {
-            cards.push(`
-            <div class="card border-primary text-primary mb-3" style="max-width: 18rem;">
-                <div class="card-header"><i class="fas fa-laptop-code"></i>${employeeObj.getRole()}</div>
-                <div class="card-body">
-                <h5 class="card-title">${employeeObj.name}</h5>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${employeeObj.id}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${employeeObj.email}">${employeeObj.email}</li>
-                    <li class="list-group-item">GitHub: <a href="${employeeObj.github}" target="__blank">${employeeObj.github}</li>
-                </ul> 
-                </div>
-            </div>
-            `);
+            textColor = `primary`;
+            roleSpecial = `<li class="list-group-item">GitHub: <a href="${employeeObj.github}" target="__blank">${employeeObj.github}</a></li>`
         } else if (employeeObj.getRole() === 'Intern') {
-            cards.push(`
-            <div class="card border-success text-success mb-3" style="max-width: 18rem;">
-                <div class="card-header"><i class="fas fa-user-graduate"></i>${employeeObj.getRole()}</div>
+            textColor = `success`;
+            roleSpecial = `<li class="list-group-item">School: ${employeeObj.school}</li>`
+        }
+        cards.push(`
+        <div class="card border-${textColor} text-${textColor} mb-3" style="max-width: 18rem;">
+            <div class="card-header"><i class="far fa-address-book"></i>${employeeObj.getRole()}</div>
                 <div class="card-body">
                 <h5 class="card-title">${employeeObj.name}</h5>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${employeeObj.id}</li>
-                    <li class="list-group-item">Email: <a href="mailto:${employeeObj.email}">${employeeObj.email}</li>
-                    <li class="list-group-item">School: ${employeeObj.school}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${employeeObj.email}">${employeeObj.email}</a></li>
+                    ${roleSpecial}
                 </ul> 
                 </div>
-            </div>
-        `)
-        } 
-    })
-    return cards.join("");
+            </div>`);
+    } 
+    return cards.join("")
 };
 
 module.exports = generateHTML   
