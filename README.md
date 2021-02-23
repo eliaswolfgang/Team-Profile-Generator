@@ -3,11 +3,11 @@ A simple CLI built using Inquirer, Chalk, Node.js, and vanilla JavaScript
 
 ## Table of Contents
 
--[Description](#description)
--[Installation](#installation)
--[License](#license)
--[Testing](#testing)
--[Images](#images)
+-[Description](#description)\n
+-[Installation](#installation)\n
+-[License](#license)\n
+-[Testing](#testing)\n
+-[Images](#images)\n
 
 ## Description
 This HTML generator takes user input from a CLI run using [inquirer npm](https://www.npmjs.com/package/inquirer) and returns a sleek, responsive web-development team profile page. Using [chalk npm](https://www.npmjs.com/package/chalk), the CLI is color-coded to match the HTML styling, and the HTML is built using [Bootstrap v 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/). Check out the index.html file in the *dist* folder of this repository for a sample.
@@ -34,13 +34,13 @@ In the *tests* folder, you'll find basic tests for each class used to generate t
 npm run test
 ```
 from the command line to ensure class functionality.
-<img src="./assets/testspassed.png" width="100">
+<img src="./assets/testspassed.png" width=100%>
 
 ## Images
 What the application's CLI looks like:
-<img src="./assets/cliexample.png" width="100">
+<img src="./assets/cliexample.png" width=100%>
 
 What the generated HTML will look like in a browser:
-<img src="./assets/HTMLsample.png>" width="100">
+<img src="./assets/HTMLsample.png>" width=100%>
 
 And check out a video demo of the working application [here](https://drive.google.com/file/d/1WXuCRkhl5DR_1iiQlRD9qnwsCI6BWd8y/view).
