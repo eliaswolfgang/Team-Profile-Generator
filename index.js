@@ -4,13 +4,14 @@ const mgrChalk = chalk.redBright;
 const engChalk = chalk.blueBright;
 const intChalk = chalk.greenBright;
 const generateHTML = require('./src/generateHTML');
+const fs = require('fs');
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
 const team = [];
 let currentObj;
 let currentEmployee;
-// Employee class information
+// Employee information
 const main = [
     { 
       name: 'employeeRole',
@@ -34,7 +35,7 @@ const main = [
       message: "What is this employee's ID number? (Please enter a number, e.g. 123)" 
     }     
 ];
-// And each role type information
+// And each specific role's information...
 const managerCheck = [
     {
       name: 'officeNumber',
@@ -56,7 +57,11 @@ const internCheck = [
       message: intChalk("What is this intern's school/university?"),
     }
 ];
-// Begin Inquirer session
+// Function to write HTML using fs module
+function writeHTML(data) {
+    fs.writeFile('./dist/index.html', data, (error) => error ? console.log(error) : console.log("Find your team profile in the dist folder!"))
+};
+// Function to begin Inquirer session
 function addEmployees() {
   inquirer.prompt(main)
     .then((answers) => {
@@ -100,11 +105,12 @@ function addEmployees() {
           default: true
         }])
         .then((answers) => {
-        if (answers.anotherEmployee == true) {
+        if (answers.anotherEmployee === true) {
             addEmployees()
         } else {
-        // write html
-        console.log(team);
+        let profileHTML = generateHTML(team);
+        writeHTML(profileHTML);
+        console.log("Your team's profile is ready! Check the dist folder.");
         process.exit(0);
         }
       });                    
