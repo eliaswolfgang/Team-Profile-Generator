@@ -41,6 +41,6 @@ What the application's CLI looks like:
 <img src="./assets/cliexample.png" width=100%>
 
 What the generated HTML will look like in a browser:
-<img src="./assets/HTMLsample.png>" width=100%>
+<img src="./assets/HTMLsample.png" width=100%>
 
 And check out a video demo of the working application [here](https://drive.google.com/file/d/1WXuCRkhl5DR_1iiQlRD9qnwsCI6BWd8y/view).
