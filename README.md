@@ -3,11 +3,11 @@ A simple CLI built using Inquirer, Chalk, Node.js, and vanilla JavaScript
 
 ## Table of Contents
 
--[Description](#description)\
--[Installation](#installation)\
--[License](#license)\
--[Testing](#testing)\
--[Images](#images)
+*[Description](#description)
+*[Installation](#installation)
+*[License](#license)
+*[Testing](#testing)
+*[Images](#images)
 
 ## Description
 This HTML generator takes user input from a CLI run using [inquirer npm](https://www.npmjs.com/package/inquirer) and returns a sleek, responsive web-development team profile page. Using [chalk npm](https://www.npmjs.com/package/chalk), the CLI is color-coded to match the HTML styling, and the HTML is built using [Bootstrap v 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/). Check out the index.html file in the *dist* folder of this repository for a sample.
